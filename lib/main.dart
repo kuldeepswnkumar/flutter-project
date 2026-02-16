@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_cetalock_1/pages/home_page.dart';
 import 'package:flutter_application_cetalock_1/pages/login_page.dart';
+import 'package:flutter_application_cetalock_1/utils/routes.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,11 +26,12 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: ThemeData(primarySwatch: Colors.blue),
       darkTheme: ThemeData(brightness: Brightness.light),
-      initialRoute: "/home",
+      debugShowCheckedModeBanner: false,
+      initialRoute: MyRoutes.homeRoute,
       routes: {
         '/': (context) => LoginPage(),
-        '/home': (context) => HomePage(),
-        '/login': (context) => LoginPage(),
+        MyRoutes.homeRoute: (context) => HomePage(),
+        MyRoutes.loginRoute: (context) => LoginPage(),
       },
     );
   }
