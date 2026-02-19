@@ -1,30 +1,32 @@
+class ProductCatalog {
+  static List<Items> items = [];
+}
+
 class Items {
   final int id;
   final String title;
-  final String descprition;
+  final String description;
   final num price;
   final String brand;
-  final String images;
+  final List<dynamic> images;
 
   Items({
     required this.id,
     required this.title,
-    required this.descprition,
+    required this.description,
     required this.price,
     required this.brand,
     required this.images,
   });
-}
 
-final products = [
-  Items(
-    id: 1,
-    title: "Essence Mascara Lash Princess",
-    descprition:
-        "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
-    price: 900,
-    brand: "Essence",
-    images:
-        "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp",
-  ),
-];
+  factory Items.fromMap(Map<String, dynamic> map) {
+    return Items(
+      id: map['id'],
+      title: map['title'],
+      description: map['description'],
+      price: map['price'],
+      brand: map['brand'] ?? "",
+      images: List<String>.from(map['images'] ?? []), // ✅ correct
+    );
+  }
+}
